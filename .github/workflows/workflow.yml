@@ -1,0 +1,24 @@
+name: CI Validate
+
+on: [push]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Environment
+        uses: actions/setup-node@v4 # (Or setup-python if using python)
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Linter
+        run: npm run lint # 👈 Look here for Task 2 (Linting step)
+
+      - name: Run Unit Tests
+        run: npm test # 👈 Look here for Task 3 (Test step)

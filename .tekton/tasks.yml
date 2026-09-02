@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: unit-test-task # 👈 Look here for Task 5
+spec:
+  steps:
+    - name: run-tests
+      image: node:20
+      script: |
+        npm install && npm test
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: cleanup-task # 👈 Look here for Task 4
+spec:
+  steps:
+    - name: purge-temp-files
+      image: alpine
+      script: |
+        echo "Cleaning up build workspaces and transient files..."
+        rm -rf /workspace/source/tmp
