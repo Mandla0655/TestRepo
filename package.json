@@ -1,6 +1,7 @@
 {
   "name": "my-node-project",
   "version": "1.0.0",
+  "type": "module",
   "description": "A simple project with validation workflows",
   "main": "index.js",
   "scripts": {
